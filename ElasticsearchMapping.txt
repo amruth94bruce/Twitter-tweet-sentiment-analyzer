@@ -1,0 +1,27 @@
+1.list all indices:
+GET /_cat/indices?v
+
+2.Make sure the index isn't there
+DELETE /logger
+
+3.Create the index
+PUT /twitter
+
+4.Add the mapping of properties to the document type `mem`
+PUT /twitter/_mapping/mem
+{
+  "mem": {
+    "properties": {
+      "timestamp": {
+        "type": "date"
+      },
+     
+	  "geo": {
+          "type": "geo_point"
+        }
+    }
+  }
+}
+
+5.get mapping
+GET /tw1/_mapping/mem
